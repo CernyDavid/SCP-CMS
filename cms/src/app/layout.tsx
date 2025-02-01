@@ -5,8 +5,8 @@ import { authOptions } from './api/auth/[...nextauth]/route'
 import SessionProvider from './SessionProvider'
 
 export const metadata: Metadata = {
-  title: 'Publishing CMS',
-  description: 'Stupid CMS for publishing articles',
+  title: 'SCP Foundation',
+  description: 'Secure, Contain, Protect',
 }
 
 export default async function RootLayout({

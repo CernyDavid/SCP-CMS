@@ -1,19 +1,32 @@
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { prisma } from '@/lib/prisma'
 
 async function main() {
-  const categories = [
-    { name: 'Technology', description: 'Tech-related articles' },
-    { name: 'Science', description: 'Scientific discoveries and news' },
-    { name: 'Sports', description: 'Sports news and updates' },
-    { name: 'Entertainment', description: 'Entertainment news' },
-    { name: 'Lifestyle', description: 'Articles about lifestyle' }
+  const objectClasses = [
+    { 
+      name: 'Safe',
+      description: 'SCPs that are easily and safely contained'
+    },
+    { 
+      name: 'Euclid',
+      description: 'SCPs that require more resources to contain or are unpredictable'
+    },
+    { 
+      name: 'Keter',
+      description: 'SCPs that are exceedingly difficult to contain'
+    },
+    { 
+      name: 'Thaumiel',
+      description: 'SCPs used to contain other SCPs'
+    },
+    { 
+      name: 'Neutralized',
+      description: 'SCPs that are no longer anomalous'
+    }
   ]
 
-  for (const category of categories) {
-    await prisma.category.create({
-      data: category
+  for (const objectClass of objectClasses) {
+    await prisma.class.create({
+      data: objectClass
     })
   }
 }

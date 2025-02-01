@@ -1,13 +1,13 @@
 import { prisma } from '@/lib/prisma'
 
 export default async function HomePage() {
-  const articles = await prisma.article.findMany({
+  const scps = await prisma.sCP.findMany({
     include: { 
-      category: true,
+      objectClass: true,
       author: { select: { name: true } }
     },
     orderBy: { createdAt: 'desc' },
-    take: 10
+    take: 20
   })
 
   return (
@@ -17,25 +17,17 @@ export default async function HomePage() {
       </h1>
 
       <div>
-        <h2>All Articles</h2>
-        {articles.map((article : any) => (
-          <div 
-            key={article.id} 
-          >
-            <h3>
-              {article.title}
-            </h3>
-            <p>
-              Category: {article.category.name}
-            </p>
-            <p>
-              By {article.author.name} on {article.createdAt.toLocaleDateString()}
-            </p>
-            <p>
-              {article.content}
-            </p>
-          </div>
-        ))}
+        <h2>All SCPs</h2>
+        <ul>
+          {scps.map((scp) => (
+            <li key={scp.id}>
+              <h3>SCP-{scp.scpNumber.toString().padStart(3, '0')}</h3>
+              <p>Object Class: {scp.objectClass.name}</p>
+              <p>Record created on: {new Date(scp.createdAt).toLocaleDateString()}</p>
+              <p>Author: {scp.author.name}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

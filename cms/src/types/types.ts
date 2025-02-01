@@ -1,22 +1,22 @@
-export type Category = {
+export type Class = {
     id: string
     name: string
-    description?: string | null
   }
   
-  export type Article = {
+export type SCP = {
     id: string
-    title: string
-    content: string
+    scpNumber: number
+    containmentProcedures: string
+    description: string
+    addenda?: string | null
     createdAt: Date
-    updatedAt: Date
-    authorId: string
-    categoryId: string
-    category: Category
+    objectClass: Class
   }
   
-  export type CreateArticleInput = {
-    title: string
-    content: string
-    categoryId: string
+  export type CreateSCPInput = {
+    scpNumber: number
+    containmentProcedures: string
+    description: string
+    addenda?: string | null
+    objectClassId: string
   }

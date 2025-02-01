@@ -1,39 +1,39 @@
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
-import { CreateArticle } from '@/components/CreateArticle'
-import { ArticleList } from '@/components/ArticleList'
+import { CreateSCP } from '@/components/CreateSCP'
+import { SCPList } from '@/components/SCPList'
 
-async function getCategories() {
-  const categories = await prisma.category.findMany({
+async function getClasses() {
+  const classes = await prisma.class.findMany({
     orderBy: {
       name: 'asc'
     }
   })
-  return categories
+  return classes
 }
 
-async function getUserArticles(userId: string) {
-  const articles = await prisma.article.findMany({
+async function getUserSCPs(userId: string) {
+  const scps = await prisma.sCP.findMany({
     where: {
       authorId: userId
     },
     include: {
-      category: true
+      objectClass: true
     },
     orderBy: {
       createdAt: 'desc'
     }
   })
-  return articles
+  return scps
 }
 
 export default async function DashboardPage() {
   const session = await requireAuth()
   
-  const [categories, articles] = await Promise.all([
-    getCategories(),
-    getUserArticles(session.user.id)
+  const [classes, scps] = await Promise.all([
+    getClasses(),
+    getUserSCPs(session.user.id)
   ])
 
   return (
@@ -41,11 +41,11 @@ export default async function DashboardPage() {
       <h1>Welcome, {session.user.name}!</h1>
       
       <div>
-        <ArticleList articles={articles} />
+        <SCPList scps={scps} />
       </div>
 
       <div>
-        <CreateArticle categories={categories} />
+        <CreateSCP classes={classes} />
       </div>
     </div>
   )

@@ -14,27 +14,29 @@ model User {
   id            String    @id @default(cuid())
   name          String?   @unique
   password      String
-  articles      Article[]
+  scps          SCP[]
   createdAt     DateTime  @default(now())
 }
 
-model Category {
+model Class {
   id            String    @id @default(cuid())
   name          String    @unique
   description   String?
-  articles      Article[]
+  scps          SCP[]
 }
 
-model Article {
-  id            String    @id @default(cuid())
-  title         String
-  content       String
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+model SCP {
+  id                          String      @id @default(cuid())
+  scpNumber                   Int         @unique
+  containmentProcedures      String      
+  description                String      
+  addenda                    String?     
+  createdAt                  DateTime    @default(now())
+  updatedAt                  DateTime    @updatedAt
   
-  author        User      @relation(fields: [authorId], references: [id])
-  authorId      String
+  author                     User        @relation(fields: [authorId], references: [id])
+  authorId                   String
   
-  category      Category  @relation(fields: [categoryId], references: [id])
-  categoryId    String
+  objectClass               Class @relation(fields: [objectClassId], references: [id])
+  objectClassId             String
 }
