@@ -38,7 +38,8 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <h1>Welcome, {session.user.name}!</h1>
+      <h1>Control Panel</h1>
+      <p>Welcome, researcher {session.user.name}</p>
       
       <div>
         <SCPList scps={scps} />

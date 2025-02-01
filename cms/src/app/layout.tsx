@@ -3,6 +3,7 @@ import Navigation from '@/components/Navigation'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './api/auth/[...nextauth]/route'
 import SessionProvider from './SessionProvider'
+import '@/app/globals.css'
 
 export const metadata: Metadata = {
   title: 'SCP Foundation',

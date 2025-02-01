@@ -12,22 +12,34 @@ export default async function HomePage() {
 
   return (
     <div>
+      <div className='header'>
       <h1>
-        My Stupid Next App
+        SCP Foundation Hub
       </h1>
-
+      <img className="logo" src="/SCP_logo.png" alt="SCP Foundation logo" />
+      <p className='tagline'>Secure. Contain. Protect.</p>
+      </div>
+      <div className='intro'>
+        <p className='welcome'>Welcome to the SCP Foundation Hub. Here you can find information on all anomalous objects, entities and phenomena ever encountered by the Foundation.</p>
+        <p className='instructions'>Please note that the site you are currently visiting, along with all other sites connected to the Foundation Intranet, may contain infohazardous, cognitohazardous, memetic or otherwise anomalous data.</p>
+        <p className='warning'>Further exploration requires at least Level 3 (Secret) security clearance. Attempting to access subsequent files without proper clearance will result in immediate termination of Foundation employement and all benefits associated with it.</p>
+      </div>
       <div>
-        <h2>All SCPs</h2>
-        <ul>
+        <h2 className='section-title'>SCP Database</h2>
+        <ul className="scp-list">
           {scps.map((scp) => (
-            <li key={scp.id}>
-              <h3>SCP-{scp.scpNumber.toString().padStart(3, '0')}</h3>
-              <p>Object Class: {scp.objectClass.name}</p>
-              <p>Record created on: {new Date(scp.createdAt).toLocaleDateString()}</p>
-              <p>Author: {scp.author.name}</p>
+            <li key={scp.id} className="scp">
+              <div className="scp__info">
+                <h3 className="scp__title">SCP-{scp.scpNumber.toString().padStart(3, '0')}</h3>
+                <p className="scp__class">{scp.objectClass.name}</p>
+              </div>
+              <div className="scp__meta">
+                <p className="scp__date">File created on: {new Date(scp.createdAt).toLocaleDateString()}</p>
+                <p className="scp__author">File created by: {scp.author.name}</p>
+              </div>
             </li>
           ))}
-        </ul>
+          </ul>
       </div>
     </div>
   )
