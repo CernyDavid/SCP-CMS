@@ -1,5 +1,4 @@
 import { prisma } from '@/lib/prisma'
-import Link from 'next/link'
 
 export default async function HomePage() {
   const articles = await prisma.article.findMany({
@@ -18,13 +17,14 @@ export default async function HomePage() {
       </h1>
 
       <div>
+        <h2>All Articles</h2>
         {articles.map((article : any) => (
           <div 
             key={article.id} 
           >
-            <h2>
+            <h3>
               {article.title}
-            </h2>
+            </h3>
             <p>
               Category: {article.category.name}
             </p>
@@ -32,13 +32,8 @@ export default async function HomePage() {
               By {article.author.name} on {article.createdAt.toLocaleDateString()}
             </p>
             <p>
-              {article.content.slice(0, 150)}...
+              {article.content}
             </p>
-            <Link 
-              href={`/article/${article.id}`} 
-            >
-              Read More
-            </Link>
           </div>
         ))}
       </div>
