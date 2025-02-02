@@ -49,7 +49,7 @@ export function CreateSCP({ classes }: Props) {
       setSuccess(true)
       router.push('/')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error creating SCP record')
+      setError(err instanceof Error ? err.message : 'Error creating SCP file.')
     } finally {
       setIsLoading(false)
     }
@@ -57,18 +57,34 @@ export function CreateSCP({ classes }: Props) {
 
   return (
     <div>
-      <h2>Create SCP Record</h2>
+      <h2 className='section-title'>Create SCP File</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      {success && <p style={{ color: 'green' }}>SCP record created successfully</p>}
-      <form ref={formRef} onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="scpNumber">SCP Number</label>
-          <input type="number" id="scpNumber" name="scpNumber" required />
+      {success && <p style={{ color: 'green' }}>SCP file created successfully.</p>}
+      <form ref={formRef} onSubmit={handleSubmit} className="form">
+        <div className="form__group">
+          <label htmlFor="scpNumber" className="form__label">
+            SCP Number
+          </label>
+          <input 
+            type="number" 
+            id="scpNumber" 
+            name="scpNumber" 
+            required 
+            className="form-input"
+            min="1"
+          />
         </div>
 
-        <div>
-          <label htmlFor="objectClassId">Object Class</label>
-          <select id="objectClassId" name="objectClassId" required>
+        <div className="form__group">
+          <label htmlFor="objectClassId" className="form__label">
+            Object Class
+          </label>
+          <select 
+            id="objectClassId" 
+            name="objectClassId" 
+            required 
+            className="form-select"
+          >
             <option value="">Select an object class</option>
             {classes.map((objectClass) => (
               <option key={objectClass.id} value={objectClass.id}>
@@ -78,22 +94,49 @@ export function CreateSCP({ classes }: Props) {
           </select>
         </div>
 
-        <div>
-          <label htmlFor="containmentProcedures">Special Containment Procedures</label>
-          <textarea id="containmentProcedures" name="containmentProcedures" required rows={5} />
+        <div className="form__group">
+          <label htmlFor="containmentProcedures" className="form__label">
+            Special Containment Procedures
+          </label>
+          <textarea 
+            id="containmentProcedures" 
+            name="containmentProcedures" 
+            required 
+            rows={5} 
+            className="form-textarea"
+          />
         </div>
 
-        <div>
-          <label htmlFor="description">Description</label>
-          <textarea id="description" name="description" required rows={5} />
+        <div className="form__group">
+          <label htmlFor="description" className="form__label">
+            Description
+          </label>
+          <textarea 
+            id="description" 
+            name="description" 
+            required 
+            rows={5} 
+            className="form-textarea"
+          />
         </div>
 
-        <div>
-          <label htmlFor="addenda">Addenda (optional)</label>
-          <textarea id="addenda" name="addenda" rows={3} />
+        <div className="form__group">
+          <label htmlFor="addenda" className="form__label">
+            Addenda (optional)
+          </label>
+          <textarea 
+            id="addenda" 
+            name="addenda" 
+            rows={3} 
+            className="form-textarea"
+          />
         </div>
 
-        <button type="submit" disabled={isLoading}>
+        <button 
+          type="submit" 
+          disabled={isLoading} 
+          className="button button--centered"
+        >
           {isLoading ? 'Creating...' : 'Create'}
         </button>
       </form>

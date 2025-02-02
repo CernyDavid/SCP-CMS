@@ -51,21 +51,21 @@ export function SCPList({ scps: initialScps }: Props) {
 
   return (
     <div>
-      <h2>Your SCP records</h2>
+      <h2 className='section-title'>Your Files</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ul>
+      <ul className='scp-list'>
         {scps.map((scp) => (
           <li key={scp.id}>
             <div>
               <h3>SCP-{scp.scpNumber.toString().padStart(3, '0')}</h3>
               <p>Object Class: {scp.objectClass.name}</p>
-              <p>Record created on: {new Date(scp.createdAt).toLocaleDateString()}</p>
+              <p>Created on: {new Date(scp.createdAt).toLocaleDateString()}</p>
               <div>
-                <button
+                <button className='button button--delete'
                   onClick={() => handleDelete(scp.id)}
                   disabled={isDeleting === scp.id}
                 >
-                  {isDeleting === scp.id ? 'Terminating...' : 'Terminate'}
+                  {isDeleting === scp.id ? 'Terminating...' : 'Delete'}
                 </button>
               </div>
             </div>

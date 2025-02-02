@@ -20,7 +20,7 @@ main {
   margin: 0 auto;
   max-width: 960px;
   background-color: #101010;
-  padding: 2em;
+  padding: 4em 2em;
 }
 
 .logo {
@@ -69,7 +69,9 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: .5em 0;
-  border-bottom: 1px solid whitesmoke;
+  border-bottom: 1px solid darkgray;
+  color: white;
+  text-decoration: none;
 }
 
 .scp__info {
@@ -95,7 +97,7 @@ main {
 
 .scp__class {
   font-style: italic;
-  color: darkgray;
+  color: #f0f0c0;
   margin: 0;
 }
 
@@ -109,4 +111,193 @@ main {
 .section-title {
   text-align: center;
   font-size: 2em;
+}
+
+.navigation {
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2em;
+  border-top: 1px solid #D70040;
+  border-bottom: 1px solid #D70040;
+}
+
+.navigation__logo {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 120px;
+}
+
+.navigation__link {
+  color: white;
+  text-decoration: none;
+  font-size: 2em;
+  display: block;
+}
+
+.navigation__link:hover {
+  color: #D70040;
+}
+
+.navigation__links {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  padding-right: 2em;
+  align-items: center;
+}
+
+.dashboard__title {
+  font-size: 3em;
+}
+
+.dashboard__intro {
+  font-size: 1.5em;
+}
+
+.button {
+  background-color: #D70040;
+  color: white;
+  font-size: 1.5em;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button--delete {
+  background-color: #FF3131;
+  font-size: 1em;
+}
+
+.button--centered {
+  display: block;
+  margin: 1.5em auto 0 auto;
+}
+
+.scp-detail__header {
+  margin-bottom: 3em;
+  padding-bottom: 1em;
+  border-bottom: 3px solid #D70040;
+}
+
+.scp-detail__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1em;
+}
+
+.scp-detail__title h1 {
+  margin: 0;
+  font-size: 3em;
+}
+
+.scp-detail__class {
+  font-size: 2em;
+  color: #f0f0c0;
+}
+
+.scp-detail__meta {
+  font-size: 0.9em;
+  color: darkgray;
+}
+
+.scp-detail__meta p {
+  margin: .25em 0;
+}
+
+.scp-detail__section {
+  margin-bottom: 2em;
+}
+
+.scp-detail__section h2 {
+  font-size: 1.5em;
+  margin: 1rem 0;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid darkgray;
+}
+
+.scp-detail__text {
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.loading,
+.error,
+.not-found {
+  text-align: center;
+  padding: 3em;
+  font-size: 1.5em;
+  color: darkgrey;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.form {
+  margin: 0 auto;
+  padding: 2em;
+  background: black;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+}
+
+.form__group {
+  margin-bottom: 1.5em;
+}
+
+.form__label {
+  display: block;
+  margin-bottom: 0.75em;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #101010;
+  box-sizing: border-box;
+  color: white;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #FF3131;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23333' stroke-width='2' class='bi bi-chevron-down'%3E%3Cpath d='M2 6l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+}
+
+.auth__title {
+  font-size: 3em;
+}
+
+.auth__text {
+  font-size: 1.25em;
+  margin: 1em 0 2em 0;
 }

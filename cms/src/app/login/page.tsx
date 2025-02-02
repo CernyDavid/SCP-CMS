@@ -33,29 +33,34 @@ export default function LoginPage() {
   }
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className='auth'>
+      <h1 className='auth__title'>Authorize</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
+      <p className='auth__text'>
+        Please submit your login credentials. You will temporarily receive Level 3-A (Secret, extended) security clearance required for accessing the Database Control Panel, if you currently have at least Level 2 (Restricted) security clearance.
+      </p>
+      <form onSubmit={handleSubmit} className='form'>
+        <div className='form__group'>
+          <label htmlFor="username" className='form__label'>Username</label>
           <input
             type="text"
             id="username"
             name="username"
+            className='form-input'
             required
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
+        <div className='form__group'>
+          <label htmlFor="password" className='form__label'>Password</label>
           <input
             type="password"
             id="password"
             name="password"
+            className='form-input'
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className='button button--centered'>Submit</button>
       </form>
     </div>
   )

@@ -79,3 +79,38 @@ export async function DELETE(
     )
   }
 }
+
+export async function GET(
+  request: Request,
+  { params }: { params: { id: string } }
+) {
+  try {
+    const scp = await prisma.sCP.findUnique({
+      where: { id: params.id },
+      include: {
+        objectClass: true,
+        author: {
+          select: {
+            id: true,
+            name: true
+          }
+        }
+      }
+    })
+
+    if (!scp) {
+      return NextResponse.json(
+        { error: 'SCP not found' },
+        { status: 404 }
+      )
+    }
+
+    return NextResponse.json(scp)
+  } catch (error) {
+    console.error('Error fetching SCP:', error)
+    return NextResponse.json(
+      { error: 'Error fetching SCP' },
+      { status: 500 }
+    )
+  }
+}

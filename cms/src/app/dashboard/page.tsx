@@ -37,9 +37,9 @@ export default async function DashboardPage() {
   ])
 
   return (
-    <div>
-      <h1>Control Panel</h1>
-      <p>Welcome, researcher {session.user.name}</p>
+    <div className='dashboard'>
+      <h1 className='dashboard__title'>Control Panel</h1>
+      <p className='dashboard__intro'>Welcome, researcher {session.user.name}. Here you can view, create and manage your files documenting the anomalous.</p>
       
       <div>
         <SCPList scps={scps} />

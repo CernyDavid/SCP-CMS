@@ -8,28 +8,29 @@ export default function Navigation() {
 
   return (
     <nav>
-      <div>
-        <div>
-          <Link href="/">
+      <div className="navigation">
+        <img className="navigation__logo" src="/SCPHeader.png" alt="SCP Foundation logo" />
+        <div className="navigation__links">
+          <Link href="/" className='navigation__link'>
             Home
           </Link>
           {session ? (
             <>
-              <Link href="/dashboard">
+              <Link href="/dashboard" className='navigation__link'>
                 Dashboard
               </Link>
-              <button 
-                onClick={() => signOut({ callbackUrl: '/login' })}
+              <p
+                onClick={() => signOut({ callbackUrl: '/login' })} className='navigation__link'
               >
                 Logout
-              </button>
+              </p>
             </>
           ) : (
             <>
-              <Link href="/login">
+              <Link href="/login" className='navigation__link'>
                 Login
               </Link>
-              <Link href="/register">
+              <Link href="/register" className='navigation__link'>
                 Register
               </Link>
             </>
