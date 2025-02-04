@@ -229,7 +229,7 @@ main {
 
 .loading,
 .error,
-.not-found {
+.not-found, .no-records {
   text-align: center;
   padding: 3em;
   font-size: 1.5em;
@@ -300,4 +300,31 @@ main {
 .auth__text {
   font-size: 1.25em;
   margin: 1em 0 2em 0;
+}
+
+.search__form {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  margin: 2em 0;
+}
+
+.search__input {
+  flex: 1;
+  padding: 0.75em 1em;
+  font-size: 1rem;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+  background-color: #101010;
+  color: white;
+}
+
+.button--search {
+  padding: 0.75em 1.5em;
+  font-size: 1rem;
+  color: white;
+  background-color: #101010;
+  border: 1px solid whitesmoke;
+  border-radius: 4px;
+  cursor: pointer;
 }

@@ -1,0 +1,4 @@
+Tohle se prostě překopíruje do .env
+DATABASE_URL="file:./db.db"
+NEXTAUTH_SECRET="muj-naprosto-tajny-secret"
+NEXTAUTH_URL="http://localhost:3000"

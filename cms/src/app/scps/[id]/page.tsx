@@ -29,7 +29,7 @@ export default function SCPDetailPage({ params }: { params: Promise<{ id: string
     }, [resolvedParams.id])
 
   if (isLoading) {
-    return <div className="loading">Loading SCP file...</div>
+    return <div className="loading">Retrieving SCP file...</div>
   }
 
   if (error) {

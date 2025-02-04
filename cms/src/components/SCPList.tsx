@@ -44,8 +44,8 @@ export function SCPList({ scps: initialScps }: Props) {
 
   if (scps.length === 0) {
     return (<div>
-    <h2>Your SCP records</h2>
-    <p>No records yet.</p>
+    <h2 className='section-title'>Your Files</h2>
+    <p className='no-records'>No records yet.</p>
     </div>)
   }
 

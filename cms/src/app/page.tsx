@@ -1,8 +1,20 @@
 import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
+import { SearchForm } from '@/components/Search'
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams?: { query?: string }
+}) {
+  const query = searchParams?.query
+
   const scps = await prisma.sCP.findMany({
+    where: query
+      ? {
+          scpNumber: parseInt(query)
+        }
+      : undefined,
     include: { 
       objectClass: true,
       author: { select: { name: true } }
@@ -27,7 +39,11 @@ export default async function HomePage() {
       </div>
       <div>
         <h2 className='section-title'>Complete Database of Anomalies</h2>
+        <div className="search">
+          <SearchForm initialQuery={query}/>
+        </div>
         <ul className="scp-list">
+          {scps.length === 0 && (<p className='no-records'>No SCP files found matching the specified criteria.</p>)}
           {scps.map((scp) => (
             <li key={scp.id} className="scp-container">
               <Link href={`/scps/${scp.id}`} className='scp'>
