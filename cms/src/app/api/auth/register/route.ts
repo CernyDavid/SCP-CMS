@@ -28,11 +28,16 @@ export async function POST(req: Request) {
       }
     })
 
+    console.log(`User created: ${user.name}`)
+
     return NextResponse.json(
       { message: 'User created successfully' },
       { status: 201 }
     )
   } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error creating user:', error.message)
+    }
     return NextResponse.json(
       { error: 'Error creating user' },
       { status: 500 }

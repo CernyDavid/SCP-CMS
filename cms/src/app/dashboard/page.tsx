@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation'
+
 import { prisma } from '@/lib/prisma'
 import { requireAuth } from '@/lib/auth'
 import { CreateSCP } from '@/components/CreateSCP'

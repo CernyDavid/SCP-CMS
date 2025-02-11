@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Navigation from '@/components/Navigation'
 import { getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]/route'
+import { authOptions } from '@/lib/auth'
 import SessionProvider from './SessionProvider'
+import { Analytics } from "@vercel/analytics/react"
 import '@/app/globals.css'
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default async function RootLayout({
           <Navigation />
           <main>{children}</main>
         </SessionProvider>
+        <Analytics />
       </body>
     </html>
   )

@@ -18,6 +18,9 @@ export async function GET() {
     })
     return NextResponse.json(scps)
   } catch (error) {
+    if (error instanceof Error) {
+      console.error('Error fetching SCPs:', error.message)
+    }
     return NextResponse.json({ error: 'Error fetching SCPs' }, { status: 500 })
   }
 }

@@ -1,15 +1,15 @@
-import { NextResponse } from 'next/server'
-import { headers } from 'next/headers'
+import { NextResponse, NextRequest } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { getCurrentUserId } from '@/lib/auth'
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const userId = await getCurrentUserId()
-    const scpId = params.id
+    const { id } = await params;
+    const scpId = id;
 
     if (!scpId) {
       return NextResponse.json(
@@ -81,12 +81,14 @@ export async function DELETE(
 }
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+  req: NextRequest,
+  { params }: {params: Promise<{ id: string }>}
+): Promise<Response> {
   try {
+    const { id } = await params;
+
     const scp = await prisma.sCP.findUnique({
-      where: { id: params.id },
+      where: { id: id },
       include: {
         objectClass: true,
         author: {

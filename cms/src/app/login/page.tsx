@@ -28,7 +28,11 @@ export default function LoginPage() {
 
       router.push('/dashboard')
     } catch (error) {
-      setError('An error occurred')
+      if (error instanceof Error) {
+        setError('An error occurred: ' + error.message)
+      } else {
+        setError('An error occurred')
+      }
     }
   }
 

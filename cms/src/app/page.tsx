@@ -5,9 +5,9 @@ import { SearchForm } from '@/components/Search'
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams?: { query?: string }
+  searchParams?: Promise<{ query?: string }>
 }) {
-  const query = searchParams?.query
+  const { query } = (await searchParams) || {};
 
   const scps = await prisma.sCP.findMany({
     where: query
